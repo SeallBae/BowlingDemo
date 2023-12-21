@@ -1,0 +1,15 @@
+# Blender MTL File: 'Bowling Pins.blend'
+# Material Count: 1
+
+newmtl Main
+Ns 413.937532
+Ka 0.440000 0.440000 0.440000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Bowling_pins_Color.png
+map_Ns Bowling_pins_Roughness.png
+refl Bowling_pins_Metallic.png
