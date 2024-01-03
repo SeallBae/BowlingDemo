@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEditor.PackageManager;
 
 public class movement : MonoBehaviour
 {
@@ -26,10 +27,19 @@ public class movement : MonoBehaviour
     }
 
 
-    void reset()
-    {
-        transform.position = originalPosition;
-        transform.rotation = originalRotation;
+    public void reset()
+    {   
+        Debug.Log("reachh movement reset");
+        Debug.Log(score.level);
+        if (score.level == 1){
+            transform.position = originalPosition;
+            transform.rotation = originalRotation;
+        }else{
+            Debug.Log("reachh");
+            transform.position = new Vector3(originalPosition.x, originalPosition.y, originalPosition.z - (score.level-1));
+            transform.rotation = originalRotation;
+        }
+        
         if (GetComponent<Rigidbody>() != null)
         {
             GetComponent<Rigidbody>().useGravity = false;
@@ -49,12 +59,13 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //stop and reset if the ball stop or fall
         if (launched && (transform.position.y < -10.0 || 
             (double.Parse(transform.position.y.ToString("F2")) == 0.14 &&
             compare(GetComponent<Rigidbody>().velocity.x, vec_thres) && compare(GetComponent<Rigidbody>().velocity.y, vec_thres) && compare(GetComponent<Rigidbody>().velocity.z, vec_thres) ) ))
         {
             reset();
+        //fucntion to throw the ball
         }else if (!launched)
         {
             //Debug.Log(Input.mousePosition.ToString("F16"));
@@ -66,7 +77,6 @@ public class movement : MonoBehaviour
             }
             else if (pressed && Input.GetMouseButtonUp(0))
             {
-
                 secondmousepos = Input.mousePosition;
 
                 GetComponent<Rigidbody>().useGravity = true; // can start falling

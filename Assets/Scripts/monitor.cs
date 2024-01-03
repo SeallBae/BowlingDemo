@@ -43,12 +43,13 @@ public class monitor : MonoBehaviour
         // if (!fallen && ((double.Parse(transform.position.y.ToString("F1")) > thresY) 
         //                 || (double.Parse(transform.position.y.ToString("F1")) < -1)))
 
+        //check if pin is downed
         if (!fallen && (double.Parse(transform.position.y.ToString("F1")) != thresY) )                
         {
-            Debug.Log(double.Parse(transform.position.y.ToString("F1")));
+
             fallcount += 1;
             fallen = true;
-            //Debug.Log("fc" + fallcount.ToString());
+
         }
         if (fallen && !movement.launched)
         {
@@ -63,10 +64,7 @@ public class monitor : MonoBehaviour
 
         }
 
-
-
-        //Debug.Log("check" + transform.gameObject.activeSelf.ToString() + score.trialno.ToString());
-
+        //all pins down, reset
         if (transform.localScale.Equals(new Vector3(0, 0, 0)) && score.trialno == 0)
         {
             reset();

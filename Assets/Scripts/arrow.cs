@@ -35,6 +35,7 @@ public class arrow : MonoBehaviour
     void Update()
     {
 
+        
         state = movement.launched ? State.Disappear : State.Original;
 
         im.enabled = !(state == State.Disappear);
